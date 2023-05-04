@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import IconText from '../components/IconText';
 
 const City = () => {
   const {
@@ -21,6 +22,7 @@ const City = () => {
     populationText,
     riseSetWrapper,
     riseSetText,
+    rowLayout,
   } = styles;
   return (
     <SafeAreaView style={container}>
@@ -31,15 +33,29 @@ const City = () => {
         <View style={cityWrap}>
           <Text style={[cityName, cityText]}>London</Text>
           <Text style={[countryName, cityText]}>UK</Text>
-          <View style={populationWrapper}>
-            <Feather name={'user'} size={46} color="white" />
-            <Text style={populationText}>8000</Text>
+          <View style={[populationWrapper, rowLayout]}>
+            <IconText
+              iconName={'user'}
+              iconColor={'white'}
+              bodyText={'8000'}
+              bodyTextStyles={populationText}
+            />
           </View>
-          <View style={riseSetWrapper}>
-            <Feather name={'sunrise'} size={30} color="white" />
-            <Text style={riseSetText}>10:46:58am</Text>
-            <Feather name={'sunset'} size={30} color="white" />
-            <Text style={riseSetText}>17:28:15pm</Text>
+          <View style={[riseSetWrapper, rowLayout]}>
+            <IconText
+              iconName={'sunrise'}
+              iconColor={'white'}
+              bodyText={'10:46:58am'}
+              bodyTextStyles={riseSetText}
+              size={30}
+            />
+            <IconText
+              iconName={'sunset'}
+              iconColor={'white'}
+              bodyText={'17:28:15pm'}
+              bodyTextStyles={riseSetText}
+              size={30}
+            />
           </View>
         </View>
       </ImageBackground>
@@ -79,27 +95,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   populationWrapper: {
-    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
     marginTop: 30,
   },
   populationText: {
     fontSize: 24,
-    marginLeft: 7.5,
+    // marginLeft: 7.5,
     color: '#fff',
   },
   riseSetWrapper: {
-    flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
     marginTop: 30,
     gap: 20,
   },
   riseSetText: {
     fontSize: 18,
     color: '#fff',
-    // fontWeight: 'bold',
+  },
+  rowLayout: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
