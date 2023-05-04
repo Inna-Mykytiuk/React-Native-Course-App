@@ -6,6 +6,7 @@ import {
   FlatList,
   View,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -72,11 +73,16 @@ const UpcomingWeather = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text>UpcomingWeather</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.dt_txt}
-      />
+      <ImageBackground
+        style={styles.image}
+        source={require('../../assets/upcoming-background1.jpg')}
+      >
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={item => item.dt_txt}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -84,7 +90,7 @@ const UpcomingWeather = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7e1d7',
+    backgroundColor: '#00466e1a',
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
@@ -94,8 +100,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    border: 5,
-    backgroundColor: '#9fa0c3',
+    border: '2px solid white',
+    borderRadius: 10,
+    backdropFilter: 'blur(10px)',
+    backgroundColor: '#00466e1a',
     // shadowColor: '#000',
     // shadowOffset: {
     //   width: 10,
@@ -113,6 +121,11 @@ const styles = StyleSheet.create({
   data: {
     fontSize: 15,
     color: '#fff',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 });
 
