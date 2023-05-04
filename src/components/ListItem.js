@@ -1,15 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, StatusBar, View } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const ListItem = props => {
   const { dt_txt, min, max, condition } = props;
+  const { item, temp, data } = styles;
   return (
-    <View style={styles.item}>
-      <FontAwesome name="sun-o" size={50} color="white" />
-      <Text style={styles.data}>{dt_txt}</Text>
-      <Text style={styles.temp}>{min}</Text>
-      <Text style={styles.temp}>{max}</Text>
+    <View style={item}>
+      <Feather name={'sun'} size={50} color="white" />
+      <Text style={data}>{dt_txt}</Text>
+      <Text style={temp}>{min}</Text>
+      <Text style={temp}>{max}</Text>
     </View>
   );
 };
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backdropFilter: 'blur(10px)',
     backgroundColor: '#00466e1a',
+    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 10px;',
   },
   temp: {
     fontSize: 20,

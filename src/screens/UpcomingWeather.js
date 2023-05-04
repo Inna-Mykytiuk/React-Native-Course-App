@@ -57,10 +57,11 @@ const UpcomingWeather = () => {
       max={item.main.temp_max}
     />
   );
+  const { container, image } = styles;
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       <ImageBackground
-        style={styles.image}
+        style={image}
         source={require('../../assets/upcoming-background1.jpg')}
       >
         <Text>UpcomingWeather</Text>
