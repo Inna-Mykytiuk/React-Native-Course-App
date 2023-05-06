@@ -77,8 +77,16 @@ const styles = StyleSheet.create({
   },
   cityWrap: {
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e1a',
-    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 10px;',
+    backgroundColor: '#00466e',
+    // backgroundColor: 'rgb(107,118,171,49)',
+    opacity: 0.8,
+    // backgroundColor: 'red',
+    // boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 10px;',
+    shadowColor: 'red',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 10,
     padding: 20,
     marginTop: 30,
   },
@@ -100,7 +108,6 @@ const styles = StyleSheet.create({
   },
   populationText: {
     fontSize: 24,
-    // marginLeft: 7.5,
     color: '#fff',
   },
   riseSetWrapper: {
