@@ -39,8 +39,9 @@ const CurrentWeather = () => {
         <View style={wrapper}>
           <Shadow
             offset={[0, 5]}
-            distance={8}
-            startColor={'#00000020'}
+            distance={10}
+            // startColor={'#00000020'}
+            startColor={'#00466e30'}
             containerViewStyle={{ alignSelf: 'stretch' }}
             radius={8}
             viewStyle={{ alignSelf: 'stretch' }}
