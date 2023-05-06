@@ -16,13 +16,16 @@ const Tabs = () => {
         tabBarInactiveTintColor: 'white',
         tabBarStyle: {
           backgroundColor: '#00466e80',
-          border: 'none',
+          elevation: 0,
         },
 
         headerStyle: {
           backgroundColor: '#00466e80',
           borderBottomWidth: 0,
         },
+        // headerTitleContainerStyle: {
+        //   marginBottom: 30,
+        // },
         headerTitleStyle: {
           fontWeight: 'bold',
           fontSize: 18,

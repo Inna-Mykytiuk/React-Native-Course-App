@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import RowText from '../components/RowText';
+import { weatherType } from '../utilities/weatherType';
+import { Shadow } from 'react-native-shadow-2';
 
 const CurrentWeather = () => {
   const {
@@ -24,6 +26,8 @@ const CurrentWeather = () => {
     image,
     item,
     textShadow,
+    shadow,
+    wrapper,
   } = styles;
 
   return (
@@ -32,21 +36,33 @@ const CurrentWeather = () => {
         style={image}
         source={require('../../assets/city-background3.jpg')}
       >
-        <View style={item}>
-          <Feather name={'sun'} size={56} color="white" />
-          <Text style={[temp, textShadow]}>6</Text>
-          <Text style={[feels, textShadow]}>Feels like 5</Text>
-          <RowText
-            messageOne={'Hight: 8 '}
-            messageTwo={'Low: 6'}
-            containerStyles={wrapHightLow}
-            messageOneStyles={[hightLow, textShadow]}
-            messageTwoStyles={[hightLow, textShadow]}
-          />
+        <View style={wrapper}>
+          <Shadow
+            offset={[0, 5]}
+            distance={8}
+            startColor={'#00000020'}
+            containerViewStyle={{ alignSelf: 'stretch' }}
+            radius={8}
+            viewStyle={{ alignSelf: 'stretch' }}
+          >
+            <View style={[item, shadow]}>
+              <Feather name={'sun'} size={56} color="white" />
+              <Text style={[temp, textShadow]}>6</Text>
+              <Text style={[feels, textShadow]}>Feels like 5</Text>
+              <RowText
+                messageOne={'Hight: 8 '}
+                messageTwo={'Low: 6'}
+                containerStyles={wrapHightLow}
+                messageOneStyles={[hightLow, textShadow]}
+                messageTwoStyles={[hightLow, textShadow]}
+              />
+            </View>
+          </Shadow>
         </View>
+
         <RowText
           messageOne={'Its sunny'}
-          messageTwo={'Its perfect t-shirt weather'}
+          messageTwo={weatherType['Thunderstorm'].message}
           containerStyles={bodyWrapper}
           messageOneStyles={[description, textShadow]}
           messageTwoStyles={[message, textShadow]}
@@ -62,21 +78,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00466e1a',
-    // marginTop: StatusBar.currentHeight || 0,
+
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignContent: 'center',
   },
 
-  // wrapper: {
-  //   flex: 1,
-  //   backgroundColor: '#f7e1d7',
-  // },
+  wrapper: {
+    // flex: 1,
+    // backgroundColor: '#f7e1d7',
+    marginTop: StatusBar.currentHeight || 0,
+  },
 
   item: {
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    // marginTop: StatusBar.currentHeight || 0,
+    // marginVertical: 8,
+    // marginHorizontal: 16,
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -85,12 +103,6 @@ const styles = StyleSheet.create({
 
     backdropFilter: 'blur(10px)',
     backgroundColor: '#00466e40',
-
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 3 },
-    // shadowOpacity: 0.3,
-    // shadowRadius: 10,
-    // elevation: 5,
   },
   temp: {
     fontSize: 48,
@@ -130,5 +142,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

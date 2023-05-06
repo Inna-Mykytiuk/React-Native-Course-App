@@ -126,10 +126,10 @@ const styles = StyleSheet.create({
   riseSetWrapper: {
     justifyContent: 'space-around',
     marginTop: 30,
-    gap: 20,
+    gap: 50,
   },
   riseSetText: {
-    fontSize: 18,
+    fontSize: 14,
     color: '#fff',
   },
   rowLayout: {
