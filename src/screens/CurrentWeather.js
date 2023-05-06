@@ -13,7 +13,7 @@ import RowText from '../components/RowText';
 const CurrentWeather = () => {
   const {
     container,
-    wrapper,
+    // wrapper,
     temp,
     feels,
     wrapHightLow,
@@ -48,8 +48,8 @@ const CurrentWeather = () => {
           messageOne={'Its sunny'}
           messageTwo={'Its perfect t-shirt weather'}
           containerStyles={bodyWrapper}
-          messageOneStyles={description}
-          messageTwoStyles={message}
+          messageOneStyles={[description, textShadow]}
+          messageTwoStyles={[message, textShadow]}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -62,15 +62,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00466e1a',
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
     flexDirection: 'column',
     justifyContent: 'space-between',
+    alignContent: 'center',
   },
 
   // wrapper: {
   //   flex: 1,
   //   backgroundColor: '#f7e1d7',
   // },
+
   item: {
     padding: 20,
     marginVertical: 8,
@@ -82,13 +84,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e20',
+    backgroundColor: '#00466e40',
 
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
-    elevation: 5,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.3,
+    // shadowRadius: 10,
+    // elevation: 5,
   },
   temp: {
     fontSize: 48,

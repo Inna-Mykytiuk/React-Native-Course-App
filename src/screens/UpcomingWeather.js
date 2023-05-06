@@ -64,7 +64,6 @@ const UpcomingWeather = () => {
         style={image}
         source={require('../../assets/upcoming-background1.jpg')}
       >
-        <Text>UpcomingWeather</Text>
         <FlatList
           data={DATA}
           renderItem={renderItem}
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00466e1a',
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
   },
   image: {
     flex: 1,

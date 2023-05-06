@@ -23,6 +23,7 @@ const City = () => {
     riseSetWrapper,
     riseSetText,
     rowLayout,
+    textShadow,
   } = styles;
 
   return (
@@ -32,14 +33,14 @@ const City = () => {
         style={imageLayout}
       >
         <View style={cityWrap}>
-          <Text style={[cityName, cityText]}>London</Text>
-          <Text style={[countryName, cityText]}>UK</Text>
+          <Text style={[cityName, cityText, textShadow]}>London</Text>
+          <Text style={[countryName, cityText, textShadow]}>UK</Text>
           <View style={[populationWrapper, rowLayout]}>
             <IconText
               iconName={'user'}
               iconColor={'white'}
               bodyText={'8000'}
-              bodyTextStyles={populationText}
+              bodyTextStyles={[populationText, textShadow]}
             />
           </View>
           <View style={[riseSetWrapper, rowLayout]}>
@@ -47,14 +48,14 @@ const City = () => {
               iconName={'sunrise'}
               iconColor={'white'}
               bodyText={'10:46:58am'}
-              bodyTextStyles={riseSetText}
+              bodyTextStyles={[riseSetText, textShadow]}
               size={30}
             />
             <IconText
               iconName={'sunset'}
               iconColor={'white'}
               bodyText={'17:28:15pm'}
-              bodyTextStyles={riseSetText}
+              bodyTextStyles={[riseSetText, textShadow]}
               size={30}
             />
           </View>
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00466e1a',
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
   },
   imageLayout: {
     flex: 1,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   },
   cityWrap: {
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e20',
+    backgroundColor: '#00466e40',
     marginTop: 30,
     padding: 20,
 
@@ -91,11 +92,11 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     // opacity: 0.6,
 
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
-    elevation: 5,
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.3,
+    // shadowRadius: 10,
+    // elevation: 5,
   },
   cityName: {
     fontSize: 40,
@@ -108,6 +109,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#fff',
     fontWeight: 'bold',
+  },
+  textShadow: {
+    textShadowColor: '#00000090',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
   },
   populationWrapper: {
     justifyContent: 'center',
