@@ -28,11 +28,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    border: '2px solid white',
+
+    borderColor: 'white',
+    borderWidth: 2,
     borderRadius: 10,
+
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e1a',
-    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 10px;',
+    backgroundColor: '#00466e20',
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
   },
   temp: {
     fontSize: 20,

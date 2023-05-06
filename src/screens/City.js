@@ -7,8 +7,8 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import IconText from '../components/IconText';
+// import { Shadow } from 'react-native-shadow-2';
 
 const City = () => {
   const {
@@ -24,6 +24,7 @@ const City = () => {
     riseSetText,
     rowLayout,
   } = styles;
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground
@@ -77,18 +78,24 @@ const styles = StyleSheet.create({
   },
   cityWrap: {
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e',
-    // backgroundColor: 'rgb(107,118,171,49)',
-    opacity: 0.8,
-    // backgroundColor: 'red',
-    // boxShadow: 'rgba(0, 0, 0, 0.5) 0px 3px 10px;',
-    shadowColor: 'red',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 10,
-    padding: 20,
+    backgroundColor: '#00466e20',
     marginTop: 30,
+    padding: 20,
+
+    // borderColor: 'white',
+    // borderWidth: 2,
+
+    borderRadius: 10,
+    overflow: 'hidden',
+
+    // backgroundColor: 'red',
+    // opacity: 0.6,
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
   },
   cityName: {
     fontSize: 40,

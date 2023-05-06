@@ -1,23 +1,57 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  ImageBackground,
+  StatusBar,
+} from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import RowText from '../components/RowText';
 
 const CurrentWeather = () => {
+  const {
+    container,
+    wrapper,
+    temp,
+    feels,
+    wrapHightLow,
+    hightLow,
+    bodyWrapper,
+    description,
+    message,
+    image,
+    item,
+    textShadow,
+  } = styles;
+
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
-        <FontAwesome name="sun-o" size={56} color="black" />
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
-        <View style={styles.wrapHightLow}>
-          <Text style={styles.hightLow}>Hight: 8 </Text>
-          <Text style={styles.hightLow}>Low: 6</Text>
+    <SafeAreaView style={container}>
+      <ImageBackground
+        style={image}
+        source={require('../../assets/city-background3.jpg')}
+      >
+        <View style={item}>
+          <Feather name={'sun'} size={56} color="white" />
+          <Text style={[temp, textShadow]}>6</Text>
+          <Text style={[feels, textShadow]}>Feels like 5</Text>
+          <RowText
+            messageOne={'Hight: 8 '}
+            messageTwo={'Low: 6'}
+            containerStyles={wrapHightLow}
+            messageOneStyles={[hightLow, textShadow]}
+            messageTwoStyles={[hightLow, textShadow]}
+          />
         </View>
-      </View>
-      <View style={styles.bodyWrapper}>
-        <Text style={styles.description}>It's sunny</Text>
-        <Text style={styles.message}>It's perfect t-shirt weather</Text>
-      </View>
+        <RowText
+          messageOne={'Its sunny'}
+          messageTwo={'Its perfect t-shirt weather'}
+          containerStyles={bodyWrapper}
+          messageOneStyles={description}
+          messageTwoStyles={message}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -27,30 +61,54 @@ export default CurrentWeather;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // marginTop: 30,
+    backgroundColor: '#00466e1a',
+    marginTop: StatusBar.currentHeight || 0,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
-  wrapper: {
-    flex: 1,
-    backgroundColor: '#f7e1d7',
+
+  // wrapper: {
+  //   flex: 1,
+  //   backgroundColor: '#f7e1d7',
+  // },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+
+    borderRadius: 10,
+
+    backdropFilter: 'blur(10px)',
+    backgroundColor: '#00466e20',
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 5,
   },
   temp: {
     fontSize: 48,
-    color: '#000',
+    color: '#fff',
   },
   feels: {
     fontSize: 30,
-    color: '#000',
+    color: '#fff',
   },
   hightLow: {
     fontSize: 20,
-    color: '#000',
+    color: '#fff',
+  },
+  textShadow: {
+    textShadowColor: '#00000090',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
   },
   wrapHightLow: {
     flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // width: '50%',
   },
   bodyWrapper: {
     justifyContent: 'flex-end',
@@ -60,8 +118,15 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 48,
+    color: '#fff',
   },
   message: {
     fontSize: 30,
+    color: '#fff',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'space-between',
   },
 });
