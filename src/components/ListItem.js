@@ -1,20 +1,34 @@
 import React from 'react';
 import { StyleSheet, Text, StatusBar, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { Card } from 'react-native-shadow-cards';
+// import { Card } from 'react-native-shadow-cards';
+import { Shadow } from 'react-native-shadow-2';
 
 const ListItem = props => {
   const { dt_txt, min, max, condition } = props;
   const { item, temp, data, textShadow } = styles;
   return (
-    <Card style={{ borderRadius: 10, elevation: 8, margin: 15 }}>
+    <Shadow
+      offset={[0, 5]}
+      distance={10}
+      // startColor={'#00000020'}
+      startColor={'#00466e30'}
+      containerViewStyle={{ alignSelf: 'stretch' }}
+      radius={8}
+      viewStyle={{ alignSelf: 'stretch' }}
+    >
       <View style={item}>
-        <Feather name={'sun'} size={50} color="white" />
+        <Feather
+          name={'sun'}
+          size={50}
+          color={'khaki'}
+          style={{ marginRight: 20 }}
+        />
         <Text style={[data, textShadow]}>{dt_txt}</Text>
         <Text style={[temp, textShadow]}>{min}</Text>
         <Text style={[temp, textShadow]}>{max}</Text>
       </View>
-    </Card>
+    </Shadow>
   );
 };
 
@@ -32,7 +46,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e40',
+    backgroundColor: '#00466e30',
 
     // shadowColor: '#000',
     // shadowOffset: { width: 0, height: 3 },
@@ -46,13 +60,18 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
   },
   temp: {
+    flexDirection: 'column',
     fontSize: 20,
-    color: '#fff',
+    color: 'khaki',
+    marginRight: 10,
   },
   data: {
     fontSize: 15,
     color: '#fff',
+    marginRight: 20,
   },
 });
 
 export default ListItem;
+
+//<Card style={{ borderRadius: 10, elevation: 8, margin: 15 }}>

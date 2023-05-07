@@ -57,7 +57,7 @@ const UpcomingWeather = () => {
       max={item.main.temp_max}
     />
   );
-  const { container, image, wrapper } = styles;
+  const { container, image, wrapper, separator } = styles;
   return (
     <SafeAreaView style={container}>
       <ImageBackground
@@ -69,6 +69,7 @@ const UpcomingWeather = () => {
           renderItem={renderItem}
           keyExtractor={item => item.dt_txt}
           style={wrapper}
+          ItemSeparatorComponent={() => <View style={separator} />}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -89,11 +90,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  separator: {
+    height: 20, // висота вертикального проміжку
+    backgroundColor: 'transparent',
+  },
 });
 
 export default UpcomingWeather;
 
-//ItemSeparatorComponent = {() => <View style={separator} />}
+// ItemSeparatorComponent = {() => <View style={separator} />}
 //separator: {
 //   height: 20, // висота вертикального проміжку
 //   backgroundColor: 'transparent',

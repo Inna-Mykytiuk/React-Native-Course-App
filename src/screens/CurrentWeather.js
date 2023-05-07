@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     backdropFilter: 'blur(10px)',
-    backgroundColor: '#00466e40',
+    backgroundColor: '#00466e30',
   },
   temp: {
     fontSize: 48,
