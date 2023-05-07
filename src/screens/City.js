@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import IconText from '../components/IconText';
-// import { Shadow } from 'react-native-shadow-2';
+import { Card } from 'react-native-shadow-cards';
 
 const City = () => {
   const {
@@ -24,6 +24,7 @@ const City = () => {
     riseSetText,
     rowLayout,
     textShadow,
+    wrapper,
   } = styles;
 
   return (
@@ -32,33 +33,37 @@ const City = () => {
         source={require('../../assets/city-background.jpg')}
         style={imageLayout}
       >
-        <View style={cityWrap}>
-          <Text style={[cityName, cityText, textShadow]}>London</Text>
-          <Text style={[countryName, cityText, textShadow]}>UK</Text>
-          <View style={[populationWrapper, rowLayout]}>
-            <IconText
-              iconName={'user'}
-              iconColor={'white'}
-              bodyText={'8000'}
-              bodyTextStyles={[populationText, textShadow]}
-            />
-          </View>
-          <View style={[riseSetWrapper, rowLayout]}>
-            <IconText
-              iconName={'sunrise'}
-              iconColor={'white'}
-              bodyText={'10:46:58am'}
-              bodyTextStyles={[riseSetText, textShadow]}
-              size={30}
-            />
-            <IconText
-              iconName={'sunset'}
-              iconColor={'white'}
-              bodyText={'17:28:15pm'}
-              bodyTextStyles={[riseSetText, textShadow]}
-              size={30}
-            />
-          </View>
+        <View style={wrapper}>
+          <Card style={{ borderRadius: 10, elevation: 10 }}>
+            <View style={cityWrap}>
+              <Text style={[cityName, cityText, textShadow]}>London</Text>
+              <Text style={[countryName, cityText, textShadow]}>UK</Text>
+              <View style={[populationWrapper, rowLayout]}>
+                <IconText
+                  iconName={'user'}
+                  iconColor={'white'}
+                  bodyText={'8000'}
+                  bodyTextStyles={[populationText, textShadow]}
+                />
+              </View>
+              <View style={[riseSetWrapper, rowLayout]}>
+                <IconText
+                  iconName={'sunrise'}
+                  iconColor={'white'}
+                  bodyText={'10:46:58am'}
+                  bodyTextStyles={[riseSetText, textShadow]}
+                  size={30}
+                />
+                <IconText
+                  iconName={'sunset'}
+                  iconColor={'white'}
+                  bodyText={'17:28:15pm'}
+                  bodyTextStyles={[riseSetText, textShadow]}
+                  size={30}
+                />
+              </View>
+            </View>
+          </Card>
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -68,36 +73,35 @@ const City = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#00466e1a',
-    // marginTop: StatusBar.currentHeight || 0,
+    // backgroundColor: '#00466e1a',
+  },
+  wrapper: {
+    marginTop: StatusBar.currentHeight || 0,
+
+    borderRadius: 10,
   },
   imageLayout: {
     flex: 1,
     resizeMode: 'cover',
-    // justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   cityWrap: {
     backdropFilter: 'blur(10px)',
     backgroundColor: '#00466e40',
-    marginTop: 30,
     padding: 20,
 
-    // borderColor: 'white',
-    // borderWidth: 2,
-
     borderRadius: 10,
-    overflow: 'hidden',
-
-    // backgroundColor: 'red',
+    // overflow: 'hidden',
     // opacity: 0.6,
 
-    // shadowColor: '#000',
+    shadowColor: '#000',
+    // elevation: 1,
     // shadowOffset: { width: 0, height: 3 },
     // shadowOpacity: 0.3,
     // shadowRadius: 10,
-    // elevation: 5,
   },
+
   cityName: {
     fontSize: 40,
   },

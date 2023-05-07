@@ -2,12 +2,12 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   FlatList,
   StatusBar,
   ImageBackground,
 } from 'react-native';
 import ListItem from '../components/ListItem';
+import { View } from 'react-native';
 
 const DATA = [
   {
@@ -57,7 +57,7 @@ const UpcomingWeather = () => {
       max={item.main.temp_max}
     />
   );
-  const { container, image } = styles;
+  const { container, image, wrapper } = styles;
   return (
     <SafeAreaView style={container}>
       <ImageBackground
@@ -68,6 +68,7 @@ const UpcomingWeather = () => {
           data={DATA}
           renderItem={renderItem}
           keyExtractor={item => item.dt_txt}
+          style={wrapper}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -78,13 +79,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00466e1a',
-    // marginTop: StatusBar.currentHeight || 0,
+  },
+  wrapper: {
+    marginTop: StatusBar.currentHeight || 0,
   },
   image: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 export default UpcomingWeather;
+
+//ItemSeparatorComponent = {() => <View style={separator} />}
+//separator: {
+//   height: 20, // висота вертикального проміжку
+//   backgroundColor: 'transparent',
+// },
