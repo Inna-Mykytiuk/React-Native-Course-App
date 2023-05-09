@@ -39,7 +39,7 @@ const City = () => {
             offset={[0, 5]}
             distance={10}
             // startColor={'#00000020'}
-            startColor={'#00466e30'}
+            startColor={'#4f3c4230'}
             containerViewStyle={{ alignSelf: 'stretch' }}
             radius={8}
             viewStyle={{ alignSelf: 'stretch' }}
