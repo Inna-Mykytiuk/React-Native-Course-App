@@ -1,8 +1,8 @@
 {
-  "name": "nat",
+  "name": "react-native-course-app",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
-  "homepage": "https://Inna-Mykytiuk.github.io/proba/",
+  "homepage": "https://Inna-Mykytiuk.github.io/React-Native-Course-App/",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Inna-Mykytiuk/proba.git"
+    "url": "git+https://github.com/Inna-Mykytiuk/React-Native-Course-App.git"
   },
   "resolutions": {
     "metro": "^0.73.7",
@@ -56,5 +56,5 @@
     "gh-pages": "^5.0.0",
     "react-native-dotenv": "^3.4.8"
   },
-  "private": true
+  "private": false
 }

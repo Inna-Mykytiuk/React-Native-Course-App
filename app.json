@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Nat",
-    "slug": "Nat",
+    "slug": "react-native-course-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -24,6 +26,12 @@
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "89c52bfa-abf5-48fe-9f01-a6f9bdfd25c0"
+      }
+    },
+    "owner": "tokio1987"
   }
 }
