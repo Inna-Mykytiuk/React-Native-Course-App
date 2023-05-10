@@ -13,11 +13,11 @@ import { weatherType } from '../utilities/weatherType';
 import { Shadow } from 'react-native-shadow-2';
 import Button from '../components/Button';
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
   const {
     container,
     // wrapper,
-    temp,
+    tempStyles,
     feels,
     wrapHightLow,
     hightLow,
@@ -31,8 +31,20 @@ const CurrentWeather = () => {
     wrapper,
   } = styles;
 
+  const {
+    main: { temp, feels_like, temp_max, temp_min },
+    weather,
+  } = weatherData;
+
+  const weatherCondition = weather[0]?.main;
+
   return (
-    <SafeAreaView style={container}>
+    <SafeAreaView
+      style={[
+        container,
+        { backgroundColor: weatherType[weatherCondition].backgroundColor },
+      ]}
+    >
       <ImageBackground
         style={image}
         source={require('../../assets/city-background3.jpg')}
@@ -48,12 +60,18 @@ const CurrentWeather = () => {
             viewStyle={{ alignSelf: 'stretch' }}
           >
             <View style={[item, shadow]}>
-              <Feather name={'sun'} size={56} color="white" />
-              <Text style={[temp, textShadow]}>6</Text>
-              <Text style={[feels, textShadow]}>Feels like 5</Text>
+              <Feather
+                name={weatherType[weatherCondition]?.icon}
+                size={56}
+                color="white"
+              />
+              <Text style={[tempStyles, textShadow]}>{`${temp}°`}</Text>
+              <Text
+                style={[feels, textShadow]}
+              >{`Feels like ${feels_like}°`}</Text>
               <RowText
-                messageOne={'Hight: 8 '}
-                messageTwo={'Low: 6'}
+                messageOne={`Hight: ${temp_max}° `}
+                messageTwo={`Low: ${temp_min}°`}
                 containerStyles={wrapHightLow}
                 messageOneStyles={[hightLow, textShadow]}
                 messageTwoStyles={[hightLow, textShadow]}
@@ -61,11 +79,11 @@ const CurrentWeather = () => {
             </View>
           </Shadow>
         </View>
-        <Button />
+        {/* <Button /> */}
 
         <RowText
-          messageOne={'Its sunny'}
-          messageTwo={weatherType['Thunderstorm'].message}
+          messageOne={weather[0]?.description}
+          messageTwo={weatherType[weatherCondition]?.message}
           containerStyles={bodyWrapper}
           messageOneStyles={[description, textShadow]}
           messageTwoStyles={[message, textShadow]}
@@ -107,9 +125,9 @@ const styles = StyleSheet.create({
     backdropFilter: 'blur(10px)',
     backgroundColor: '#00466e30',
   },
-  temp: {
+  tempStyles: {
     fontSize: 48,
-    color: '#fff',
+    color: 'khaki',
   },
   feels: {
     fontSize: 30,
@@ -117,7 +135,7 @@ const styles = StyleSheet.create({
   },
   hightLow: {
     fontSize: 20,
-    color: '#fff',
+    color: 'khaki',
   },
   textShadow: {
     textShadowColor: '#00000090',
@@ -134,11 +152,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   description: {
-    fontSize: 48,
+    fontSize: 42,
     color: '#fff',
   },
   message: {
-    fontSize: 30,
+    fontSize: 26,
     color: '#fff',
   },
   image: {

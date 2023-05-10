@@ -8,10 +8,11 @@ import {
   View,
 } from 'react-native';
 import IconText from '../components/IconText';
-import { Card } from 'react-native-shadow-cards';
+// import { Card } from 'react-native-shadow-cards';
 import { Shadow } from 'react-native-shadow-2';
+import moment from 'moment';
 
-const City = () => {
+const City = ({ weatherData }) => {
   const {
     imageLayout,
     container,
@@ -27,6 +28,8 @@ const City = () => {
     textShadow,
     wrapper,
   } = styles;
+
+  const { name, country, population, sunrise, sunset } = weatherData;
 
   return (
     <SafeAreaView style={container}>
@@ -45,13 +48,13 @@ const City = () => {
             viewStyle={{ alignSelf: 'stretch' }}
           >
             <View style={cityWrap}>
-              <Text style={[cityName, cityText, textShadow]}>London</Text>
-              <Text style={[countryName, cityText, textShadow]}>UK</Text>
+              <Text style={[cityName, cityText, textShadow]}>{name}</Text>
+              <Text style={[countryName, cityText, textShadow]}>{country}</Text>
               <View style={[populationWrapper, rowLayout]}>
                 <IconText
                   iconName={'user'}
                   iconColor={'white'}
-                  bodyText={'8000'}
+                  bodyText={`Population: ${population}`}
                   bodyTextStyles={[populationText, textShadow]}
                 />
               </View>
@@ -59,14 +62,14 @@ const City = () => {
                 <IconText
                   iconName={'sunrise'}
                   iconColor={'khaki'}
-                  bodyText={'10:46:58am'}
+                  bodyText={moment(sunrise).format('h:mm:ss a')}
                   bodyTextStyles={[riseSetText, textShadow]}
                   size={30}
                 />
                 <IconText
                   iconName={'sunset'}
                   iconColor={'khaki'}
-                  bodyText={'17:28:15pm'}
+                  bodyText={moment(sunset).format('h:mm:ss a')}
                   bodyTextStyles={[riseSetText, textShadow]}
                   size={30}
                 />

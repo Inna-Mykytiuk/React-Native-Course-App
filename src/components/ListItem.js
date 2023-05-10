@@ -3,10 +3,12 @@ import { StyleSheet, Text, StatusBar, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 // import { Card } from 'react-native-shadow-cards';
 import { Shadow } from 'react-native-shadow-2';
+import { weatherType } from '../utilities/weatherType';
+import moment from 'moment';
 
 const ListItem = props => {
   const { dt_txt, min, max, condition } = props;
-  const { item, temp, data, textShadow } = styles;
+  const { item, temp, data, textShadow, dayTextWrapper } = styles;
   return (
     <Shadow
       offset={[0, 5]}
@@ -19,14 +21,24 @@ const ListItem = props => {
     >
       <View style={item}>
         <Feather
-          name={'sun'}
+          name={weatherType[condition].icon}
           size={50}
           color={'khaki'}
           style={{ marginRight: 20 }}
         />
-        <Text style={[data, textShadow]}>{dt_txt}</Text>
-        <Text style={[temp, textShadow]}>{min}</Text>
-        <Text style={[temp, textShadow]}>{max}</Text>
+        <View style={dayTextWrapper}>
+          <Text style={[data, textShadow]}>
+            {moment(dt_txt).format('dddd')}
+          </Text>
+          <Text style={[data, textShadow]}>
+            {moment(dt_txt).format('h:mm:ss a')}
+          </Text>
+        </View>
+
+        <Text style={[temp, textShadow]}>{`${Math.round(min)}° / ${Math.round(
+          max
+        )}°`}</Text>
+        {/* <Text style={[temp, textShadow]}>{`${Math.round(max)}`}</Text> */}
       </View>
     </Shadow>
   );
@@ -69,6 +81,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#fff',
     marginRight: 20,
+  },
+  dayTextWrapper: {
+    flexDirection: 'column',
   },
 });
 
