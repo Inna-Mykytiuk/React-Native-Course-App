@@ -11,7 +11,7 @@ import { Feather } from '@expo/vector-icons';
 import RowText from '../components/RowText';
 import { weatherType } from '../utilities/weatherType';
 import { Shadow } from 'react-native-shadow-2';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 
 const CurrentWeather = ({ weatherData }) => {
   const {
